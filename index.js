@@ -3,7 +3,10 @@ let tasks = [
     {description: 'make my bed', status: 'todo'}, 
     {description: 'walk the dog', status: 'todo'},
     {description: 'write draft english paper', status: 'doing'},
-    {description: 'sanding art project', status: 'doing'}];
+    {description: 'sanding art project', status: 'doing'},
+    {description: 'wash the dishes', status: 'done'},
+    {description: 'finish math homework', status: 'done'},
+    {description: 'practice my trumpet', status: 'done'}];
             
 function drawCard(index, task){
     return `<div id="task-${index}" class="card">
@@ -20,9 +23,10 @@ function drawCard(index, task){
 
 function drawTodoCards(){
     let output = '';
-    
     tasks.forEach((task, index) => {
-        output += drawCard(index, task)
+        if(task.status == 'todo'){
+            output += drawCard(index, task);
+        }
     });
     
     return output;
@@ -32,7 +36,9 @@ function drawDoingCards(){
     let output = '';
     
     tasks.forEach((task, index) => {
-        output += drawCard(index, task)
+        if(task.status == 'doing'){
+            output += drawCard(index, task);
+        }
     });
     
     return output;
